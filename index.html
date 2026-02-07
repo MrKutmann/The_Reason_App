@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindfulStream</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #050a14;
+        color: white;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      .glass-effect {
+        background: rgba(3, 7, 18, 0.92);
+        backdrop-filter: blur(32px) saturate(120%);
+        -webkit-backdrop-filter: blur(32px) saturate(120%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .mindful-gradient {
+        background: linear-gradient(180deg, rgba(5, 10, 20, 0) 0%, rgba(5, 10, 20, 0.9) 100%);
+      }
+      
+      .glass-card-stack {
+        position: relative;
+        width: 42px;
+        height: 42px;
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        display: inline-block;
+      }
+      
+      .glass-card-stack.mini {
+        width: 36px;
+        height: 36px;
+      }
+
+      .glass-card-layer-back {
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        width: 100%;
+        height: 100%;
+        border-radius: 14px;
+        background: rgba(11, 18, 33, 0.85); 
+        backdrop-filter: blur(8px);
+        z-index: 1;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      }
+      
+      .mini .glass-card-layer-back {
+        border-radius: 12px;
+        top: -3px;
+        left: -3px;
+      }
+
+      .glass-card-layer-front {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .mini .glass-card-layer-front {
+        border-radius: 12px;
+      }
+
+      .glass-card-stack:hover {
+        transform: translateY(-3px) scale(1.05);
+      }
+      .glass-card-stack:hover .glass-card-layer-front,
+      .glass-card-stack.active .glass-card-layer-front {
+        background: rgba(220, 220, 220, 0.95);
+        color: #050a14;
+        box-shadow: 0 6px 20px 0 rgba(11, 18, 33, 0.4);
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .glass-card-stack:hover .glass-card-layer-back,
+      .glass-card-stack.active .glass-card-layer-back {
+        background: rgba(15, 25, 45, 0.95);
+        transform: translate(1px, 1px);
+      }
+      
+      ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      
+      /* Intro Animations */
+      @keyframes word-intro {
+        0% { opacity: 0; transform: translateY(20px); filter: blur(10px); }
+        30% { opacity: 1; transform: translateY(0); filter: blur(0); }
+        70% { opacity: 1; transform: translateY(0); filter: blur(0); }
+        100% { opacity: 0; transform: translateY(-20px); filter: blur(10px); }
+      }
+
+      .animate-word-the {
+        animation: word-intro 2.4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        animation-delay: 0.2s;
+      }
+
+      .animate-word-reason {
+        animation: word-intro 2.4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        animation-delay: 0.6s;
+      }
+
+      @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .animate-spin-slow {
+        animation: spin-slow 8s linear infinite;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

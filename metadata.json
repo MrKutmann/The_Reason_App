@@ -1,0 +1,8 @@
+{
+  "name": "TheReason 1.0",
+  "description": "A mindful social platform that uses Gemini AI to vet content, ensuring your feed is filled with intellectual, educational, and positive videos instead of doomscrolling bait.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
